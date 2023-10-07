@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	outline: none;
+	padding: 0;
+}
+
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+*:active,
+*:focus,
+*:hover {
+	outline: none;
+}
+
+html,
+body {
+	position: relative;
+	width: 100%;
+}
+
+body {
+	background-color: #fff;
+	color: #181818;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.5;
+	overflow-x: hidden;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+tr:last-child {
+	border-bottom: none;
+}
+
+.main-bg {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+.main-bg img {
+	width: 100%;
+}
+
+
+.text-content h1 {
+	font-size: 56px;
+	font-weight: 800;
+	margin: 12px 0 16px;
+}
+
+.text-content h2 {
+	font-size: 28px;
+	font-weight: bold;
+	margin: 48px 0 16px;
+}
+
+.text-content h3 {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 12px 0 16px;
+}
+
+.text-content h4 {
+	font-size: 16px;
+	font-weight: bold;
+	margin: 8px 0 12px;
+}
+
+.text-content p {
+	font-size: 28px;
+	font-weight: 400;
+	margin: 4px 0 8px;
+}
+
+.text-content ul {
+	list-style: initial;
+	margin: 4px 0 8px;
+	padding-left: 36px;
+}
+
+.text-content ol {
+	list-style: decimal;
+	margin: 4px 0 8px;
+	padding-left: 36px;
+}
+
+.text-content li {
+	font-size: 28px;
+	font-weight: 400;
+}
+
+.text-content li + li {
+	margin-top: 16px;
+}
+
+.text-content ol > li > ol {
+	list-style: lower-alpha;
+}

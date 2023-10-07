@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'a'>;
+
+const { href } = Astro.props;
+---
+
+<a href={href} class='flex bg-gray-900 text-size-24 font-700 text-white hover:bg-btnRed p-24 rounded-24 transition-all'>
+	<slot/>
+</a>

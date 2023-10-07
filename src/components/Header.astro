@@ -1,0 +1,21 @@
+---
+import Container from './Container.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<header class="flex items-center justify-center py-24 w-full fixed top-0 left-0">
+	<Container>
+		<div class="flex items-center justify-between gap-24">
+			<h2><a href="/" class="text-size-16 font-700">{SITE_TITLE}</a></h2>
+
+			<a
+				href="/"
+				target={'_blank'}
+				class=
+					"bg-gray-900 text-white flex items-center justify-center h-72 w-72 rounded-24 p-12 font-700"
+				>
+				PDF
+			</a>
+		</div>
+	</Container>
+</header>

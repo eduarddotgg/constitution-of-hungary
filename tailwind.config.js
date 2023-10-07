@@ -6,7 +6,7 @@ module.exports = withTV({
     require('@tailwindcss/typography'),
   ],
   content: [
-    "./src/**/*.{html,tsx,ts}",
+    "./src/**/*.{html,tsx,ts,astro}",
   ],
   darkMode: "media",
   theme: {
@@ -91,6 +91,7 @@ module.exports = withTV({
       current: 'currentColor',
       black: "#000",
       white: "#fff",
+      btnRed: '#F13B3C',
       blue: {
         50: "#E7F2FF",
         100: "#D0E6FF",

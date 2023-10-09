@@ -2,34 +2,76 @@
 import { getCollection } from "astro:content";
 import ChapterLink from "./ChapterLink.astro";
 
-const chapters = (await getCollection('chapter')).sort(
+const firstGroup = (await getCollection('chapter')).filter(item => !item.slug.startsWith('3') && !item.slug.startsWith('4') && !item.slug.startsWith('5') ).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
 
-const firstChapter = (await getCollection('chapter')).filter(item => item.slug.startsWith('1')).sort(
+const secondGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('3')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
 
-const secondChapter = (await getCollection('chapter')).filter(item => item.slug.startsWith('2')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
-const thirdChapter = (await getCollection('chapter')).filter(item => item.slug.startsWith('3')).sort(
+const thirdGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('4')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
 
-const fourthChapter = (await getCollection('chapter')).filter(item => item.slug.startsWith('4')).sort(
+const fourthGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('5')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
+
+const groups = {
+	first: {
+		title: null,
+		chapters: firstGroup
+	},
+	second: {
+		title: 'Az állam',
+		chapters: secondGroup
+	},
+	third: {
+		title: 'A különleges jogrend',
+		chapters: thirdGroup
+	},
+	fourth: {
+		title: null,
+		chapters: fourthGroup
+	}
+}
+
 ---
 
 <div class="py-144 min-h-680">
 
 	<div class="flex flex-col gap-48">
-		<div class="flex flex-col gap-24">
+
+		{
+			Object.keys(groups).map((key) => (
+				<div class="flex flex-col gap-12">
+					<div class="w-full max-w-680 mx-auto">
+						<h3 class="text-size-24 font-600 m-0">{groups[key].title}</h3>
+					</div>
+
+					<nav class="w-full max-w-680 mx-auto">
+						<ul class="flex flex-col gap-12">
+							{
+								groups[key].chapters.map((chapter) => (
+									<li>
+										<ChapterLink href={`/chapter/${chapter.slug}/`}>
+											<span>{chapter.data.title}</span>
+										</ChapterLink>
+									</li>
+								))
+							}
+						</ul>
+					</nav>
+				</div>
+			))
+		}
+
+		<!--<div class="flex flex-col gap-24">
 			<nav class="w-full max-w-680 mx-auto">
 				<ul class="flex flex-col gap-24">
 					{
-						firstChapter.map((chapter) => (
+						firstGroup.map((chapter) => (
 							<li>
 								<ChapterLink href={`/chapter/${chapter.slug}/`}>
 									<span>{chapter.data.title}</span>
@@ -39,13 +81,13 @@ const fourthChapter = (await getCollection('chapter')).filter(item => item.slug.
 					}
 				</ul>
 			</nav>
-		</div>
+		</div>-->
 
-		<div class="flex flex-col gap-24">
+		<!--<div class="flex flex-col gap-24">
 			<nav class="w-full max-w-680 mx-auto">
 				<ul class="flex flex-col gap-24">
 					{
-						secondChapter.map((chapter) => (
+						secondGroup.map((chapter) => (
 							<li>
 								<ChapterLink href={`/chapter/${chapter.slug}/`}>
 									<span>{chapter.data.title}</span>
@@ -55,9 +97,9 @@ const fourthChapter = (await getCollection('chapter')).filter(item => item.slug.
 					}
 				</ul>
 			</nav>
-		</div>
+		</div>-->
 
-		<div class="flex flex-col gap-12">
+		<!--<div class="flex flex-col gap-12">
 			<div class="w-full max-w-680 mx-auto">
 				<h3 class="text-size-24 font-600 m-0">Az állam</h3>
 			</div>
@@ -65,7 +107,7 @@ const fourthChapter = (await getCollection('chapter')).filter(item => item.slug.
 			<nav class="w-full max-w-680 mx-auto">
 				<ul class="flex flex-col gap-12">
 					{
-						thirdChapter.map((chapter) => (
+						thirdGroup.map((chapter) => (
 							<li>
 								<ChapterLink href={`/chapter/${chapter.slug}/`}>
 									<span>{chapter.data.title}</span>
@@ -75,9 +117,9 @@ const fourthChapter = (await getCollection('chapter')).filter(item => item.slug.
 					}
 				</ul>
 			</nav>
-		</div>
+		</div>-->
 
-		<div class="flex flex-col gap-12">
+		<!--<div class="flex flex-col gap-12">
 			<div class="w-full max-w-680 mx-auto">
 				<h3 class="text-size-24 font-600 m-0">A különleges jogrend</h3>
 			</div>
@@ -85,7 +127,7 @@ const fourthChapter = (await getCollection('chapter')).filter(item => item.slug.
 			<nav class="w-full max-w-680 mx-auto">
 				<ul class="flex flex-col gap-12">
 					{
-						fourthChapter.map((chapter) => (
+						fourthGroup.map((chapter) => (
 							<li>
 								<ChapterLink href={`/chapter/${chapter.slug}/`}>
 									<span>{chapter.data.title}</span>
@@ -95,21 +137,22 @@ const fourthChapter = (await getCollection('chapter')).filter(item => item.slug.
 					}
 				</ul>
 			</nav>
-		</div>
+		</div>-->
 
-
-		<!--<nav class="max-w-680 mx-auto">
-			<ul class="flex flex-col gap-24">
-				{
-					chapters.map((chapter) => (
-						<li>
-							<ChapterLink href={`/chapter/${chapter.slug}/`}>
-								<span>{chapter.data.title}</span>
-							</ChapterLink>
-						</li>
-					))
-				}
-			</ul>
-		</nav>-->
+		<!--<div class="flex flex-col gap-12">
+			<nav class="w-full max-w-680 mx-auto">
+				<ul class="flex flex-col gap-12">
+					{
+						fifthGroup.map((chapter) => (
+							<li>
+								<ChapterLink href={`/chapter/${chapter.slug}/`}>
+									<span>{chapter.data.title}</span>
+								</ChapterLink>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+		</div>-->
 	</div>
 </div>

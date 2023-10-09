@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	:root {
+		--background: 0 0 100%;
+		--foreground: 0 0 9%;
+
+		--muted: 0 0 96%;
+		--muted-foreground: 0 0 46%;
+
+		--border: 0 0 80%;
+		--input: 0 0 80%;
+
+		--card: 0 0% 100%;
+		--card-foreground: 0 0 9%;
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 0 0 9%;
+
+		--primary: 0 0 9%;
+		--primary-foreground: 0 0 100%;
+
+		--secondary: 0 0 96%;
+		--secondary-foreground: 0 0 9%;
+
+		--accent: 0 0 96%;
+		--accent-foreground: 0 0 100%;
+
+		--success: 92deg 51% 51%;
+		--success-foreground: 0 0 9%;
+
+		--warning: 51deg 100% 57%;
+		--warning-foreground: 0 0 9%;
+
+		--danger: 7deg 100% 61%;
+		--danger-foreground: 0 0 100%;
+
+		--info: 212deg 100% 54%;
+		--info-foreground: 0 0 100%;
+
+		--ring: 215 20.2% 65.1%;
+		--radius: 0.5rem;
+	}
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -65,7 +108,8 @@ tr:last-child {
 .text-content h1 {
 	font-size: 56px;
 	font-weight: 800;
-	margin: 12px 0 16px;
+	line-height: 64px;
+	margin: 12px 0 48px;
 }
 
 .text-content h2 {
@@ -98,21 +142,52 @@ tr:last-child {
 	padding-left: 36px;
 }
 
-.text-content ol {
-	list-style: decimal;
+.text-content > ol {
+	counter-reset: item;
+	list-style: none;
 	margin: 4px 0 8px;
-	padding-left: 36px;
 }
 
 .text-content li {
 	font-size: 28px;
 	font-weight: 400;
+	padding-left: 48px;
+	position: relative;
+}
+
+.text-content ol > li::before {
+	display: inline-block;
+	content: "(" counter(item) ") ";
+	counter-increment: item;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 2em;
 }
 
 .text-content li + li {
-	margin-top: 16px;
+	margin-top: 24px;
 }
 
-.text-content ol > li > ol {
+.text-content ol ol li {
+	padding-left: 40px;
+}
+
+.text-content ol ol li:first-child {
+	margin-top: 24px;
+}
+
+.text-content ol ol {
+	counter-reset: itemNested;
 	list-style: lower-alpha;
+}
+
+.text-content ol > li {
+	display: block;
+	margin-bottom: 12px;
+}
+
+.text-content ol > li ol li::before {
+	content: counter(itemNested, lower-alpha) ") ";
+	counter-increment: itemNested;
 }

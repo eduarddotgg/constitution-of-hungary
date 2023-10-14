@@ -1,27 +1,32 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
+import Container from "../components/Container.astro";
 
 const { title, description, pubDate } = Astro.props;
 ---
 
+
+
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
+<head>
+  <BaseHead title={title} description={description}/>
+</head>
 
-	<body>
-		<Header />
+<body>
+<Header/>
 
-		<main class="pt-144 pb-96">
-			<article>
+<main class="pt-144 pb-96">
+  <Container>
+    <article>
 
-				<div class="max-w-680 mx-auto text-content">
-					<slot />
-        </div>
+      <div class="max-w-768 mx-auto text-content">
+        <slot/>
+      </div>
 
-			</article>
-		</main>
+    </article>
+  </Container>
+</main>
 
-	</body>
+</body>
 </html>

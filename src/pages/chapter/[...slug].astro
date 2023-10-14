@@ -1,21 +1,48 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import ChapterLayout from "../../layouts/ChapterLayout.astro";
+import ChapterLink from "../../components/ChapterLink.astro";
 
 export async function getStaticPaths() {
 	const chapters = await getCollection('chapter');
-	return chapters.map((chapter) => ({
+	const numberOfPosts = chapters.length;
+
+	return chapters.sort(
+		(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	).map((chapter, i) => ({
 		params: { slug: chapter.slug },
-		props: chapter,
+		props: {
+			chapter,
+			prevPost: // Previous post
+				i + 1 === numberOfPosts // If the current post is the oldest
+					? { data: "" }
+					: chapters[i + 1],
+			nextPost: // Next post
+				i === numberOfPosts // If the current post is the newest
+					? { data: null }
+					: chapters[i + 1],
+		},
 	}));
 }
 type Props = CollectionEntry<'chapter'>;
 
 const chapter = Astro.props;
-const { Content } = await chapter.render();
+const { prevPost, nextPost } = Astro.props
+const { Content } = await chapter.chapter.render();
+
+console.log('nextPost', nextPost)
 ---
 
 
 <ChapterLayout>
-	<Content />
+  <Content/>
+
+	{nextPost && nextPost.data &&
+    <div class="flex flex-col pt-72">
+      <h2>Tovább</h2>
+
+      <ChapterLink href={`/chapter/${nextPost.slug}/`}>
+				{nextPost.data.title}
+      </ChapterLink>
+    </div>}
 </ChapterLayout>

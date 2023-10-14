@@ -1,32 +1,36 @@
 ---
 import Container from "./Container.astro";
 import { Search } from 'astro-feather-icons'
+import { Slider } from "./Slider";
 ---
 
 <div class="flex flex-col justify-center h-screen min-h-480">
-  <Container>
-    <div class={'flex flex-col justify-center gap-48 max-w-680 mx-auto'}>
+	<Container>
+		<div class={'flex flex-col justify-center gap-48 max-w-768 mx-auto'}>
 
-      <div>
-        <form>
-          <div class={'flex w-full relative'}>
-            <input
-              type="text"
-              class={
-								'text-size-16 border border-gray-100 focus:border-gray-900 h-72 w-full rounded-24 pl-24 pr-64 py-12 transition-all'
-							}
-            />
-            <button
-              title={'Search'}
-              class={
-								'bg-gray-900 flex items-center justify-center text-white h-72 w-72 rounded-24 absolute top-0 right-0'
-							}>
-              <Search/>
-              <!--<RiSearchLine size={24} />-->
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </Container>
+			<div class="relative">
+				<Slider client:load/>
+				<div>
+					<form>
+						<div class={'flex w-full relative'}>
+							<input
+								type="text"
+								class={
+									'text-size-16 border border-gray-100 focus:border-gray-900 h-72 w-full rounded-24 pl-24 pr-64 py-12 transition-all'
+								}
+							/>
+							<button
+								title={'Search'}
+								class={
+									'bg-gray-900 flex items-center justify-center text-white h-72 w-72 rounded-24 absolute top-0 right-0'
+								}>
+								<Search/>
+								<!--<RiSearchLine size={24} />-->
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</Container>
 </div>

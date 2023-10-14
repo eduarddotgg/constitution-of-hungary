@@ -29,8 +29,6 @@ type Props = CollectionEntry<'chapter'>;
 const chapter = Astro.props;
 const { prevPost, nextPost } = Astro.props
 const { Content } = await chapter.chapter.render();
-
-console.log('nextPost', nextPost)
 ---
 
 

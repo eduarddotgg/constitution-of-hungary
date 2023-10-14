@@ -2,6 +2,26 @@
 import Container from "./Container.astro";
 import { Search } from 'astro-feather-icons'
 import { Slider } from "./Slider";
+
+const texts = [
+	"Büszkék vagyunk arra, hogy Szent István királyunk ezer évvel ezelőtt szilárd alapokra helyezte a magyar államot, és hazánkat a keresztény Európa részévé tette.",
+	"Büszkék vagyunk országunk megmaradásáért, szabadságáért és függetlenségéért küzd ő őseinkre.",
+	"Büszkék vagyunk a magyar emberek nagyszer ű szellemi alkotásaira.",
+	"Büszkék vagyunk arra, hogy népünk évszázadokon át harcokban védte Európát, tehetségével, szorgalmával gyarapította annak közös értékeit.",
+	"Elismerjük a kereszténység nemzetmegtartó szerepét. Becsüljük országunk különböző vallási hagyományait.",
+	// "Ígérjük, hogy megőrizzük az elmúlt évszázad viharaiban részekre szakadt nemzetünk szellemi és lelki egységét. A Magyarországon él ő nemzetiségeket és népcsoportokat a magyar nemzet részének tekintjük.",
+	// "Vállaljuk, hogy örökségünket, a magyar kultúrát, egyedülálló nyelvünket, a Kárpát - medence ember alkotta és természet adta értékeit ápoljuk és megóvjuk. Felelősséget viselünk utódainkért, ezért anyagi, szellemi és természeti erőforrásaink gondos felhasználásával védelmezzük az utánunk jövők életfeltételeit.",
+	"Hisszük, hogy nemzeti kultúránk gazdag hozzájárulás az európai egység sokszínűségéhez.",
+	"Tiszteljük más népek szabadságát és kultúráját, együttm űködésre törekszünk a vilá g minden nemzetével.",
+	"Valljuk, hogy az emberi lét alapja az emberi méltóság.",
+	"Valljuk, hogy az egyéni szabadság csak másokkal együttműködve bontakozhat ki.",
+	"Valljuk, hogy együttélésünk legfontosabb keretei a család és a nemzet, összetartozásunk alapvető értékei a hűség, a hit és a szeretet.",
+	"Valljuk, hogy a közösség erejének és minden ember becsületének alapja a munka, az emberi szellem teljesítménye.",
+	"Valljuk az elesettek és a szegények megsegítésének kötelességét.",
+	"Valljuk, hogy a polgárnak és az államnak közös célja a jó élet, a biztonság, a rend, az igazság, a szabadság kiteljesítése.",
+	"Valljuk, hogy valódi népuralom csak ott van, ahol az állam szolgálja polgárait, ügyeiket méltányosan, visszaélés és részrehajlás nélkül intézi.",
+];
+
 ---
 
 <div class="flex flex-col justify-center h-screen min-h-480">
@@ -9,7 +29,7 @@ import { Slider } from "./Slider";
 		<div class={'flex flex-col justify-center gap-48 max-w-768 mx-auto'}>
 
 			<div class="relative">
-				<Slider client:load/>
+				<Slider texts={texts} client:load/>
 				<div>
 					<form>
 						<div class={'flex w-full relative'}>

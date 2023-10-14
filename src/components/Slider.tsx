@@ -9,7 +9,7 @@ export const Slider = ({texts}: any) => {
 			() => {
 				setIndex((prevIndex) => (prevIndex + 1) % texts.length);
 			},
-			3000, // every 3 seconds
+			12000, // every 3 seconds
 		);
 		return () => clearTimeout(intervalId);
 	}, [texts]);

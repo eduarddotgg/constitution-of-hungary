@@ -105,6 +105,26 @@ tr:last-child {
 }
 
 
+.hero {
+    padding-top: 78px;
+    height: calc(100vh - 78px);
+}
+
+@media (min-width: 768px) {
+    .hero {
+        padding-top: 86px;
+        height: calc(100vh - 86px);
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero {
+        min-height: 720px;
+        padding-top: 102px;
+        height: calc(100vh - 102px);
+    }
+}
+
 .text-content h1 {
     font-size: 28px;
     font-weight: 800;
@@ -197,21 +217,21 @@ tr:last-child {
 .text-content li {
     font-size: 16px;
     font-weight: 400;
-    padding-left: 24px;
+    padding-left: 36px;
     position: relative;
 }
 
 @media (min-width: 768px) {
     .text-content li {
         font-size: 24px;
-        padding-left: 36px;
+        padding-left: 56px;
     }
 }
 
 @media (min-width: 1024px) {
     .text-content li {
         font-size: 28px;
-        padding-left: 48px;
+        padding-left: 64px;
     }
 }
 
@@ -279,4 +299,14 @@ tr:last-child {
 .slider .text-transition div {
     display: flex;
     align-items: flex-end;
+}
+
+
+.text-content img {
+    margin: 24px auto 48px;
+    max-width: 360px;
+}
+
+.text-content img[alt="coat-of-arms-of-hungary!"] {
+    max-width: 160px;
 }

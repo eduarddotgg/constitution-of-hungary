@@ -7,7 +7,6 @@ const { title, description, pubDate } = Astro.props;
 ---
 
 
-
 <html lang="en">
 <head>
   <BaseHead title={title} description={description}/>
@@ -26,6 +25,9 @@ const { title, description, pubDate } = Astro.props;
 
     </article>
   </Container>
+  <div class={'main-bg'}>
+    <img src={'/bg-2.png'}/>
+  </div>
 </main>
 
 </body>

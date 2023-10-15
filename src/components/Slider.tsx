@@ -9,14 +9,14 @@ export const Slider = ({texts}: any) => {
 			() => {
 				setIndex((prevIndex) => (prevIndex + 1) % texts.length);
 			},
-			12000, // every 3 seconds
+			16000
 		);
 		return () => clearTimeout(intervalId);
 	}, [texts]);
 
 	return (
 		<div className="slider absolute left-0 bottom-0 w-full mb-120">
-			{texts.map((text: string, i) => {
+			{texts.map((text: string, i: number) => {
 				return (
 					<h1
 						key={i}

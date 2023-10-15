@@ -1,7 +1,8 @@
 ---
 import Container from "./Container.astro";
-import { Search } from 'astro-feather-icons'
+import MiniSearch from "./MiniSearch.astro";
 import { Slider } from "./Slider";
+import { Search } from "./Search";
 
 const texts = [
 	"Büszkék vagyunk arra, hogy Szent István királyunk ezer évvel ezelőtt szilárd alapokra helyezte a magyar államot, és hazánkat a keresztény Európa részévé tette.",
@@ -29,27 +30,9 @@ const texts = [
 		<div class={'flex flex-col justify-center gap-48 max-w-768 mx-auto'}>
 
 			<div class="relative">
-				<Slider texts={texts} client:load/>
-				<div>
-					<form>
-						<div class={'flex w-full relative'}>
-							<input
-								type="text"
-								class={
-									'text-size-16 border border-gray-100 focus:border-gray-900 h-72 w-full rounded-24 pl-24 pr-64 py-12 transition-all'
-								}
-							/>
-							<button
-								title={'Search'}
-								class={
-									'bg-gray-900 flex items-center justify-center text-white h-72 w-72 rounded-24 absolute top-0 right-0'
-								}>
-								<Search/>
-								<!--<RiSearchLine size={24} />-->
-							</button>
-						</div>
-					</form>
-				</div>
+				<Slider texts={texts} client:load />
+
+        <MiniSearch />
 			</div>
 		</div>
 	</Container>

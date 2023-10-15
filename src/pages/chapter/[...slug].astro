@@ -13,10 +13,6 @@ export async function getStaticPaths() {
 		params: { slug: chapter.slug },
 		props: {
 			chapter,
-			prevPost: // Previous post
-				i + 1 === numberOfPosts // If the current post is the oldest
-					? { data: "" }
-					: chapters[i + 1],
 			nextPost: // Next post
 				i === numberOfPosts // If the current post is the newest
 					? { data: null }
@@ -27,7 +23,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'chapter'>;
 
 const chapter = Astro.props;
-const { prevPost, nextPost } = Astro.props
+const { nextPost } = Astro.props
 const { Content } = await chapter.chapter.render();
 ---
 

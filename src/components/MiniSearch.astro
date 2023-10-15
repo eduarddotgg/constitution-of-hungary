@@ -1,0 +1,70 @@
+---
+import { Search } from 'astro-feather-icons'
+---
+<div class="w-full">
+
+  <div class="flex w-full relative">
+		<input type="text" class={
+			'text-size-16 border border-gray-100 focus:border-gray-900 h-72 w-full rounded-24 pl-24 pr-64 py-12 transition-all'
+		} data-search-inp />
+    <button
+      title="Keresés"
+      class="
+				bg-gray-900 flex items-center justify-center text-white h-72 w-72 rounded-24 absolute top-0 right-0"
+			>
+			<Search/>
+    </button>
+	</div>
+
+	<div class="w-full relative" data-search-result></div>
+</div>
+
+<script>
+	import type Fuse from 'fuse.js';
+	import type { Searchable } from 'astro-fuse';
+
+	const inp = document.querySelector<HTMLInputElement>('[data-search-inp]');
+	const searchResult = document.querySelector('[data-search-result]');
+
+	let inst: Fuse<Searchable>;
+
+	function load() {
+		if (!inst) {
+			return loadFuse().then((_inst) => {
+				inst = _inst;
+				return inst;
+			});
+		}
+
+		return Promise.resolve(inst);
+	}
+
+	inp?.addEventListener("input", () => {
+		load()
+			.then((fuse) => fuse.search(inp?.value))
+			.then((results) => {
+				if (!searchResult) {
+					return;
+				}
+
+				if (!results.length) {
+					searchResult.innerHTML = ``
+					return;
+				}
+
+				const listItems = results
+					.map(({ item }) => `
+							<li>
+								<a href="/chapter/${item.frontmatter.chapterSlug}" class="flex hover:bg-accent text-size-16 md:text-size-20 lg:text-size-24 font-700 py-8 px-24">${item.frontmatter.title}</a>
+							</li>
+					`)
+					.join('');
+
+				searchResult.innerHTML = `
+					<ul class="border border-gray-100 rounded-24 flex flex-col gap-4 max-h-240 overflow-y-auto backdrop-blur bg-white/10 absolute top-8 left-0 w-full py-12 z-10">
+						${listItems}
+					</ul>
+				`
+			});
+	});
+</script>

@@ -84,14 +84,14 @@ body {
     background-image: url('/bg.png');
     background-position: bottom center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
 }
 
 .chapter-body {
     background-image: url('/bg-2.png');
     background-position: bottom center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
 }
 
 a {

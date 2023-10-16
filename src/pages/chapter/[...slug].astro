@@ -9,8 +9,12 @@ export async function getStaticPaths() {
 
 	return chapters.sort(
 		(a, b) => {
-			const numA = parseInt(a.slug.replace('-', '.'), 10);
-			const numB = parseInt(b.slug.replace('-', '.'), 10);
+			const [numA, subA] = a.slug.split('-').map(Number);
+			const [numB, subB] = b.slug.split('-').map(Number);
+
+			if (numA === numB) {
+				return subA - subB;
+			}
 
 			return numA - numB;
 		}

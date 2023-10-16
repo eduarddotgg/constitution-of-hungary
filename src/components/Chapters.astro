@@ -5,8 +5,12 @@ import Container from "./Container.astro";
 
 const firstGroup = (await getCollection('chapter')).filter(item => !item.slug.startsWith('3') && !item.slug.startsWith('4') && !item.slug.startsWith('5')).sort(
 	(a, b) => {
-		const numA = parseInt(a.slug.replace('-', '.'), 10);
-		const numB = parseInt(b.slug.replace('-', '.'), 10);
+		const [numA, subA] = a.slug.split('-').map(Number);
+		const [numB, subB] = b.slug.split('-').map(Number);
+
+		if (numA === numB) {
+			return subA - subB;
+		}
 
 		return numA - numB;
 	}
@@ -14,8 +18,12 @@ const firstGroup = (await getCollection('chapter')).filter(item => !item.slug.st
 
 const secondGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('3')).sort(
 	(a, b) => {
-		const numA = parseInt(a.slug.replace('-', '.'), 10);
-		const numB = parseInt(b.slug.replace('-', '.'), 10);
+		const [numA, subA] = a.slug.split('-').map(Number);
+		const [numB, subB] = b.slug.split('-').map(Number);
+
+		if (numA === numB) {
+			return subA - subB;
+		}
 
 		return numA - numB;
 	}
@@ -23,8 +31,12 @@ const secondGroup = (await getCollection('chapter')).filter(item => item.slug.st
 
 const thirdGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('4')).sort(
 	(a, b) => {
-		const numA = parseInt(a.slug.replace('-', '.'), 10);
-		const numB = parseInt(b.slug.replace('-', '.'), 10);
+		const [numA, subA] = a.slug.split('-').map(Number);
+		const [numB, subB] = b.slug.split('-').map(Number);
+
+		if (numA === numB) {
+			return subA - subB;
+		}
 
 		return numA - numB;
 	}
@@ -32,8 +44,12 @@ const thirdGroup = (await getCollection('chapter')).filter(item => item.slug.sta
 
 const fourthGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('5')).sort(
 	(a, b) => {
-		const numA = parseInt(a.slug.replace('-', '.'), 10);
-		const numB = parseInt(b.slug.replace('-', '.'), 10);
+		const [numA, subA] = a.slug.split('-').map(Number);
+		const [numB, subB] = b.slug.split('-').map(Number);
+
+		if (numA === numB) {
+			return subA - subB;
+		}
 
 		return numA - numB;
 	}

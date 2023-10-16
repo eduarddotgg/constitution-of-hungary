@@ -11,14 +11,11 @@ import Chapters from "../components/Chapters.astro";
 <head>
   <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
 </head>
-<body>
+<body class="index-body">
 <Header title={SITE_TITLE}/>
 <main>
   <HeroSection/>
   <Chapters/>
 </main>
-<div class={'main-bg'}>
-  <img src={'/bg.png'}/>
-</div>
 </body>
 </html>

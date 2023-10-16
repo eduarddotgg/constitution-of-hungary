@@ -8,7 +8,12 @@ export async function getStaticPaths() {
 	const numberOfPosts = chapters.length;
 
 	return chapters.sort(
-		(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+		(a, b) => {
+			const numA = parseInt(a.slug.replace('-', '.'), 10);
+			const numB = parseInt(b.slug.replace('-', '.'), 10);
+
+			return numA - numB;
+		}
 	).map((chapter, i) => ({
 		params: { slug: chapter.slug },
 		props: {

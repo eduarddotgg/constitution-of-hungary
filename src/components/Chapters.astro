@@ -4,19 +4,39 @@ import ChapterLink from "./ChapterLink.astro";
 import Container from "./Container.astro";
 
 const firstGroup = (await getCollection('chapter')).filter(item => !item.slug.startsWith('3') && !item.slug.startsWith('4') && !item.slug.startsWith('5')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => {
+		const numA = parseInt(a.slug.replace('-', '.'), 10);
+		const numB = parseInt(b.slug.replace('-', '.'), 10);
+
+		return numA - numB;
+	}
 );
 
 const secondGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('3')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => {
+		const numA = parseInt(a.slug.replace('-', '.'), 10);
+		const numB = parseInt(b.slug.replace('-', '.'), 10);
+
+		return numA - numB;
+	}
 );
 
 const thirdGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('4')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => {
+		const numA = parseInt(a.slug.replace('-', '.'), 10);
+		const numB = parseInt(b.slug.replace('-', '.'), 10);
+
+		return numA - numB;
+	}
 );
 
 const fourthGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('5')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => {
+		const numA = parseInt(a.slug.replace('-', '.'), 10);
+		const numB = parseInt(b.slug.replace('-', '.'), 10);
+
+		return numA - numB;
+	}
 );
 
 const groups = {
@@ -40,31 +60,31 @@ const groups = {
 ---
 
 <div class="pb-144 min-h-680">
-  <Container>
-    <div class="flex flex-col gap-48 max-w-768 mx-auto">
+	<Container>
+		<div class="flex flex-col gap-48 max-w-768 mx-auto">
 			{
 				Object.keys(groups).map((key) => (
-          <div class="flex flex-col gap-12">
-            <div class="w-full">
-              <p class="text-size-24 font-600 m-0">{groups[key].title}</p>
-            </div>
+					<div class="flex flex-col gap-12">
+						<div class="w-full">
+							<p class="text-size-24 font-600 m-0">{groups[key].title}</p>
+						</div>
 
-            <nav class="w-full">
-              <ul class="flex flex-col gap-12">
+						<nav class="w-full">
+							<ul class="flex flex-col gap-12">
 								{
 									groups[key].chapters.map((chapter) => (
-                    <li>
-                      <ChapterLink href={`/chapter/${chapter.slug}/`}>
-                        <span>{chapter.data.title}</span>
-                      </ChapterLink>
-                    </li>
+										<li>
+											<ChapterLink href={`/chapter/${chapter.slug}/`}>
+												<span>{chapter.data.title}</span>
+											</ChapterLink>
+										</li>
 									))
 								}
-              </ul>
-            </nav>
-          </div>
+							</ul>
+						</nav>
+					</div>
 				))
-			}
-    </div>
-  </Container>
-</div>
+				}
+				</div>
+				</Container>
+				</div>

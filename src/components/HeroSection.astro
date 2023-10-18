@@ -22,18 +22,74 @@ const texts = [
 	"Valljuk, hogy a polgárnak és az államnak közös célja a jó élet, a biztonság, a rend, az igazság, a szabadság kiteljesítése.",
 	"Valljuk, hogy valódi népuralom csak ott van, ahol az állam szolgálja polgárait, ügyeiket méltányosan, visszaélés és részrehajlás nélkül intézi.",
 ];
-
 ---
 
-<div class="hero flex flex-col justify-center min-h-480">
+<div class="hero flex flex-col justify-center min-h-480 relative">
 	<Container>
 		<div class={'flex flex-col justify-center gap-48 max-w-768 mx-auto'}>
 
 			<div class="relative">
-				<Slider texts={texts} client:load />
+				<Slider texts={texts} client:load/>
 
-        <MiniSearch />
+				<MiniSearch/>
+
 			</div>
 		</div>
 	</Container>
+	<div class="absolute bottom-0 left-0 w-full py-12 md:py-16 lg:py-24">
+		<Container>
+			<div class={'flex flex-row justify-center gap-48 max-w-768 mx-auto'}>
+				<button id="scroll-to-button" type="button" class='flex bg-gray-900 text-size-16 md:text-size-20 lg:text-size-24 font-700 text-white hover:bg-btnRed p-16 px-24 md:p-16 lg:p-24 rounded-20 lg:rounded-24 transition-all '>Kezdj el olvasni</button>
+			</div>
+		</Container>
+	</div>
 </div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const scrollButton = document.getElementById("scroll-to-button");
+		const content = document.getElementById("chapters-list");
+
+		// Function to scroll to the content smoothly
+		function scrollToContent() {
+			const contentTop = content.getBoundingClientRect().top + window.scrollY;
+			const duration = 300; // Duration of the animation in milliseconds
+
+			const startTime = performance.now();
+
+			function scroll(timestamp) {
+				const elapsed = timestamp - startTime;
+				const progress = Math.min(elapsed / duration, 1);
+				window.scrollTo(0, contentTop * progress);
+
+				if (progress < 1) {
+					window.requestAnimationFrame(scroll);
+				}
+			}
+
+			window.requestAnimationFrame(scroll);
+		}
+
+		// Add a click event listener to the scroll button
+		scrollButton.addEventListener("click", scrollToContent);
+	});
+
+	document.addEventListener("DOMContentLoaded", function () {
+		const elementToHide = document.getElementById("scroll-to-button");
+		const scrollTrigger = 144; // Number of pixels to scroll before hiding the element
+		let isHidden = false;
+
+		function handleScroll() {
+			if (window.scrollY > scrollTrigger && !isHidden) {
+				elementToHide.style.opacity = 0;
+				isHidden = true;
+			} else if (window.scrollY <= scrollTrigger && isHidden) {
+				elementToHide.style.opacity = 1;
+				isHidden = false;
+			}
+		}
+
+		// Add a scroll event listener to trigger the animation
+		window.addEventListener("scroll", handleScroll);
+	});
+</script>

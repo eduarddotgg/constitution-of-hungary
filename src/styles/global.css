@@ -3,312 +3,298 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --background: 0 0 100%;
-        --foreground: 0 0 9%;
+	:root {
+		--background: 0 0 100%;
+		--foreground: 0 0 9%;
 
-        --muted: 0 0 96%;
-        --muted-foreground: 0 0 46%;
+		--muted: 0 0 96%;
+		--muted-foreground: 0 0 46%;
 
-        --border: 0 0 80%;
-        --input: 0 0 80%;
+		--border: 0 0 80%;
+		--input: 0 0 80%;
 
-        --card: 0 0% 100%;
-        --card-foreground: 0 0 9%;
+		--card: 0 0% 100%;
+		--card-foreground: 0 0 9%;
 
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0 9%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 0 0 9%;
 
-        --primary: 0 0 9%;
-        --primary-foreground: 0 0 100%;
+		--primary: 0 0 9%;
+		--primary-foreground: 0 0 100%;
 
-        --secondary: 0 0 96%;
-        --secondary-foreground: 0 0 9%;
+		--secondary: 0 0 96%;
+		--secondary-foreground: 0 0 9%;
 
-        --accent: 0deg 0% 96%;
-        --accent-foreground: 0deg 0% 100%;
+		--accent: 0deg 0% 96%;
+		--accent-foreground: 0deg 0% 100%;
 
-        --success: 92deg 51% 51%;
-        --success-foreground: 0 0 9%;
+		--success: 92deg 51% 51%;
+		--success-foreground: 0 0 9%;
 
-        --warning: 51deg 100% 57%;
-        --warning-foreground: 0 0 9%;
+		--warning: 51deg 100% 57%;
+		--warning-foreground: 0 0 9%;
 
-        --danger: 7deg 100% 61%;
-        --danger-foreground: 0 0 100%;
+		--danger: 7deg 100% 61%;
+		--danger-foreground: 0 0 100%;
 
-        --info: 212deg 100% 54%;
-        --info-foreground: 0 0 100%;
+		--info: 212deg 100% 54%;
+		--info-foreground: 0 0 100%;
 
-        --ring: 215 20.2% 65.1%;
-        --radius: 0.5rem;
-    }
+		--ring: 215 20.2% 65.1%;
+		--radius: 0.5rem;
+	}
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    outline: none;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	outline: none;
+	padding: 0;
 }
 
 *::before,
 *::after {
-    box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 *:active,
 *:focus,
 *:hover {
-    outline: none;
+	outline: none;
 }
 
 html,
 body {
-    position: relative;
-    width: 100%;
+	position: relative;
+	width: 100%;
 }
 
 body {
-    background-color: #fff;
-    color: #181818;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.5;
-    min-height: 100vh;
-    overflow-x: hidden;
+	background-color: #fff;
+	color: #181818;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.5;
+	min-height: 100vh;
+	overflow-x: hidden;
 }
 
 .index-body {
-    background-image: url('/bg.png');
-    background-position: bottom center;
-    background-repeat: no-repeat;
-    background-size: 100%;
+	background-image: url('/bg.png');
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 .chapter-body {
-    background-image: url('/bg-2.png');
-    background-position: bottom center;
-    background-repeat: no-repeat;
-    background-size: 100%;
+	background-image: url('/bg-2.png');
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 ul, ol {
-    list-style: none;
+	list-style: none;
 }
 
 tr:last-child {
-    border-bottom: none;
+	border-bottom: none;
 }
 
 .hero {
-    padding-top: 78px;
-    height: calc(100vh - 78px);
-}
-
-@media (min-width: 768px) {
-    .hero {
-        padding-top: 86px;
-        height: calc(100vh - 86px);
-    }
-}
-
-@media (min-width: 1024px) {
-    .hero {
-        min-height: 720px;
-        padding-top: 102px;
-        height: calc(100vh - 102px);
-    }
+	padding-top: 78px;
+	height: 100vh;
+	min-height: 720px;
 }
 
 .text-content h1 {
-    font-size: 28px;
-    font-weight: 800;
-    line-height: 36px;
-    margin: 12px 0 36px;
+	font-size: 28px;
+	font-weight: 800;
+	line-height: 36px;
+	margin: 12px 0 36px;
 }
 
 @media (min-width: 768px) {
-    .text-content h1 {
-        font-size: 48px;
-        line-height: 56px;
-        margin: 12px 0 48px;
-    }
+	.text-content h1 {
+		font-size: 48px;
+		line-height: 56px;
+		margin: 12px 0 48px;
+	}
 }
 
 @media (min-width: 1024px) {
-    .text-content h1 {
-        font-size: 56px;
-        line-height: 64px;
-        margin: 12px 0 48px;
-    }
+	.text-content h1 {
+		font-size: 56px;
+		line-height: 64px;
+		margin: 12px 0 48px;
+	}
 }
 
 .text-content h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 36px 0 12px;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 36px 0 12px;
 }
 
 @media (min-width: 768px) {
-    .text-content h2 {
-        font-size: 24px;
-        font-weight: bold;
-        margin: 40px 0 16px;
-    }
+	.text-content h2 {
+		font-size: 24px;
+		font-weight: bold;
+		margin: 40px 0 16px;
+	}
 }
 
 @media (min-width: 1024px) {
-    .text-content h2 {
-        font-size: 28px;
-        font-weight: bold;
-        margin: 48px 0 16px;
-    }
+	.text-content h2 {
+		font-size: 28px;
+		font-weight: bold;
+		margin: 48px 0 16px;
+	}
 }
 
 .text-content h3 {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 12px 0 16px;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 12px 0 16px;
 }
 
 .text-content h4 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 8px 0 12px;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 8px 0 12px;
 }
 
 .text-content p {
-    font-size: 16px;
-    font-weight: 400;
-    margin: 4px 0 8px;
+	font-size: 16px;
+	font-weight: 400;
+	margin: 4px 0 8px;
 }
 
 @media (min-width: 768px) {
-    .text-content p {
-        font-size: 24px;
-        margin: 4px 0 8px;
-    }
+	.text-content p {
+		font-size: 24px;
+		margin: 4px 0 8px;
+	}
 }
 
 @media (min-width: 1024px) {
-    .text-content p {
-        font-size: 28px;
-        margin: 4px 0 8px;
-    }
+	.text-content p {
+		font-size: 28px;
+		margin: 4px 0 8px;
+	}
 }
 
 .text-content ul {
-    list-style: initial;
-    margin: 4px 0 8px;
-    padding-left: 36px;
+	list-style: initial;
+	margin: 4px 0 8px;
+	padding-left: 36px;
 }
 
 .text-content > ol {
-    counter-reset: item;
-    list-style: none;
-    margin: 4px 0 8px;
+	counter-reset: item;
+	list-style: none;
+	margin: 4px 0 8px;
 }
 
 .text-content li {
-    font-size: 16px;
-    font-weight: 400;
-    padding-left: 36px;
-    position: relative;
+	font-size: 16px;
+	font-weight: 400;
+	padding-left: 36px;
+	position: relative;
 }
 
 @media (min-width: 768px) {
-    .text-content li {
-        font-size: 24px;
-        padding-left: 56px;
-    }
+	.text-content li {
+		font-size: 24px;
+		padding-left: 56px;
+	}
 }
 
 @media (min-width: 1024px) {
-    .text-content li {
-        font-size: 28px;
-        padding-left: 64px;
-    }
+	.text-content li {
+		font-size: 28px;
+		padding-left: 64px;
+	}
 }
 
 .text-content ol > li::before {
-    display: inline-block;
-    content: "(" counter(item) ") ";
-    counter-increment: item;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 2em;
+	display: inline-block;
+	content: "(" counter(item) ") ";
+	counter-increment: item;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 2em;
 }
 
 .text-content li + li {
-    margin-top: 16px;
+	margin-top: 16px;
 }
 
 @media (min-width: 768px) {
-    .text-content li + li {
-        margin-top: 20px;
-    }
+	.text-content li + li {
+		margin-top: 20px;
+	}
 }
 
 @media (min-width: 1024px) {
-    .text-content li + li {
-        margin-top: 24px;
-    }
+	.text-content li + li {
+		margin-top: 24px;
+	}
 }
 
 .text-content ol ol li {
-    padding-left: 24px;
+	padding-left: 24px;
 }
 
 @media (min-width: 768px) {
-    .text-content ol ol li {
-        padding-left: 36px;
-    }
+	.text-content ol ol li {
+		padding-left: 36px;
+	}
 }
 
 @media (min-width: 1024px) {
-    .text-content ol ol li {
-        padding-left: 40px;
-    }
+	.text-content ol ol li {
+		padding-left: 40px;
+	}
 }
 
 .text-content ol ol li:first-child {
-    margin-top: 24px;
+	margin-top: 24px;
 }
 
 .text-content ol ol {
-    counter-reset: itemNested;
-    list-style: lower-alpha;
+	counter-reset: itemNested;
+	list-style: lower-alpha;
 }
 
 .text-content ol > li {
-    display: block;
-    margin-bottom: 12px;
+	display: block;
+	margin-bottom: 12px;
 }
 
 .text-content ol > li ol li::before {
-    content: counter(itemNested, lower-alpha) ") ";
-    counter-increment: itemNested;
+	content: counter(itemNested, lower-alpha) ") ";
+	counter-increment: itemNested;
 }
 
 .slider .text-transition div {
-    display: flex;
-    align-items: flex-end;
+	display: flex;
+	align-items: flex-end;
 }
 
 
 .text-content img {
-    margin: 24px auto 48px;
-    max-width: 360px;
+	margin: 24px auto 48px;
+	max-width: 360px;
 }
 
 .text-content img[alt="coat-of-arms-of-hungary!"] {
-    max-width: 160px;
+	max-width: 160px;
 }

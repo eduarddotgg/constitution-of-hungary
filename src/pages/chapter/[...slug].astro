@@ -22,8 +22,8 @@ export async function getStaticPaths() {
 		params: { slug: chapter.slug },
 		props: {
 			chapter,
-			nextPost: // Next post
-				i === numberOfPosts // If the current post is the newest
+			nextPost:
+				i === numberOfPosts
 					? { data: null }
 					: chapters[i + 1],
 		},
@@ -33,19 +33,20 @@ type Props = CollectionEntry<'chapter'>;
 
 const chapter = Astro.props;
 const { nextPost } = Astro.props
-const { Content } = await chapter.chapter.render();
+const { Content, headings } = await chapter.chapter.render();
+
+const title = headings.find(heading => heading.depth === 1)
 ---
 
-
-<ChapterLayout>
-  <Content/>
+<ChapterLayout title={title.text}>
+	<Content/>
 
 	{nextPost && nextPost.data &&
-    <div class="flex flex-col pt-72">
-      <h2>Tovább</h2>
+		<div class="flex flex-col pt-72">
+			<h2>Tovább</h2>
 
-      <ChapterLink href={`/chapter/${nextPost.slug}/`}>
+			<ChapterLink href={`/chapter/${nextPost.slug}/`}>
 				{nextPost.data.title}
-      </ChapterLink>
-    </div>}
+			</ChapterLink>
+		</div>}
 </ChapterLayout>

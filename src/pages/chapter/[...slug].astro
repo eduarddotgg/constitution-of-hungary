@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import ChapterLayout from "../../layouts/ChapterLayout.astro";
 import ChapterLink from "../../components/ChapterLink.astro";
+import { AudioPlayer } from "../../components/AudioPlayer";
 
 export async function getStaticPaths() {
 	const chapters = await getCollection('chapter');
@@ -42,11 +43,13 @@ const title = headings.find(heading => heading.depth === 1)
 	<Content/>
 
 	{nextPost && nextPost.data &&
-		<div class="flex flex-col pt-72">
+		<div class="flex flex-col pt-72 relative z-10">
 			<h2>Tovább</h2>
 
 			<ChapterLink href={`/chapter/${nextPost.slug}/`}>
 				{nextPost.data.title}
 			</ChapterLink>
 		</div>}
+
+	<AudioPlayer fileName={chapter.chapter.slug} client:load/>
 </ChapterLayout>

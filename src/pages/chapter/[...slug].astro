@@ -51,5 +51,5 @@ const title = headings.find(heading => heading.depth === 1)
 			</ChapterLink>
 		</div>}
 
-	<AudioPlayer fileName={chapter.chapter.slug} client:load/>
+	<AudioPlayer fileName={chapter.chapter.slug} client:only="react"/>
 </ChapterLayout>

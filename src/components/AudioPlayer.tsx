@@ -13,7 +13,7 @@ export const AudioPlayer = ({fileName}: Props) => {
 			<div className={'container mx-auto px-24'}>
 				<button onClick={() => setPlaying(!playing)}
 								title={"lejátszás"}
-								className={"bg-gray-900 flex items-center justify-center text-white h-72 w-72 rounded-24"}>
+								className={"bg-gray-900 hover:bg-btnRed flex items-center justify-center text-white h-72 w-72 rounded-24"}>
 					{!playing ? (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 													 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 													 >

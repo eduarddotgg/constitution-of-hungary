@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Container from "../components/Container.astro";
 import { SITE_TITLE } from "../consts";
 import ChapterHeader from "../components/ChapterHeader.astro";
+import MiniSearch from "../components/MiniSearch.astro";
 
 const { title, description, pubDate } = Astro.props;
 ---
@@ -13,14 +14,14 @@ const { title, description, pubDate } = Astro.props;
 </head>
 
 <body class="chapter-body">
-<ChapterHeader/>
+<ChapterHeader hideSearch={true}/>
 
-<main class="pt-96 md:pt-144 pb-144">
+<main class="pt-144 pb-48">
 	<Container>
 		<article>
 
-			<div class="max-w-768 mx-auto text-content">
-				<slot/>
+			<div class="max-w-768 mx-auto">
+				<MiniSearch/>
 			</div>
 
 		</article>

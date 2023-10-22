@@ -4,14 +4,13 @@ import { Search } from 'astro-feather-icons'
 <div class="w-full">
 
   <div class="flex w-full relative">
-		<input type="text" class={
+		<label for="search" class="hidden">Keresés</label>
+		<input id="search" type="text" class={
 			'text-size-16 border border-gray-100 focus:border-gray-900 h-72 w-full rounded-24 pl-24 pr-64 py-12 transition-all'
 		} data-search-inp />
     <button
       title="Keresés"
-      class="
-				bg-gray-900 flex items-center justify-center text-white h-72 w-72 rounded-24 absolute top-0 right-0"
-			>
+      class="bg-gray-900 flex items-center justify-center text-white h-72 w-72 rounded-24 absolute top-0 right-0">
 			<Search/>
     </button>
 	</div>

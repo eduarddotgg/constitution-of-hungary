@@ -3,74 +3,46 @@ import { getCollection } from "astro:content";
 import ChapterLink from "./ChapterLink.astro";
 import Container from "./Container.astro";
 
-const firstGroup = (await getCollection('chapter')).filter(item => !item.slug.startsWith('3') && !item.slug.startsWith('4') && !item.slug.startsWith('5')).sort(
-	(a, b) => {
-		const [numA, subA] = a.slug.split('-').map(Number);
-		const [numB, subB] = b.slug.split('-').map(Number);
+const chapters = await getCollection('chapter')
 
-		if (numA === numB) {
-			return subA - subB;
+const getChapterGroup = (group: string) => {
+	const regexPattern = new RegExp(`^[${group}]`);
+
+	return chapters.filter(item => regexPattern.test(item.slug)).sort(
+		(a, b) => {
+			const [numA, subA] = a.slug.split('-').map(Number);
+			const [numB, subB] = b.slug.split('-').map(Number);
+
+			if (numA === numB) {
+				return subA - subB;
+			}
+
+			return numA - numB;
 		}
-
-		return numA - numB;
-	}
-);
-
-const secondGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('3')).sort(
-	(a, b) => {
-		const [numA, subA] = a.slug.split('-').map(Number);
-		const [numB, subB] = b.slug.split('-').map(Number);
-
-		if (numA === numB) {
-			return subA - subB;
+	).map(item => {
+		return {
+			title: item.data.title,
+			slug: item.slug,
 		}
+	});
+}
 
-		return numA - numB;
-	}
-);
-
-const thirdGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('4')).sort(
-	(a, b) => {
-		const [numA, subA] = a.slug.split('-').map(Number);
-		const [numB, subB] = b.slug.split('-').map(Number);
-
-		if (numA === numB) {
-			return subA - subB;
-		}
-
-		return numA - numB;
-	}
-);
-
-const fourthGroup = (await getCollection('chapter')).filter(item => item.slug.startsWith('5')).sort(
-	(a, b) => {
-		const [numA, subA] = a.slug.split('-').map(Number);
-		const [numB, subB] = b.slug.split('-').map(Number);
-
-		if (numA === numB) {
-			return subA - subB;
-		}
-
-		return numA - numB;
-	}
-);
-
-const groups = {
+const chapterGroups = {
 	first: {
 		title: null,
-		chapters: firstGroup
+		chapters: getChapterGroup('012')
 	},
 	second: {
 		title: 'Az állam',
-		chapters: secondGroup
+		chapters: getChapterGroup('3')
 	},
 	third: {
 		title: 'A különleges jogrend',
-		chapters: thirdGroup
+		chapters: getChapterGroup('4')
 	},
 	fourth: {
 		title: null,
-		chapters: fourthGroup
+		chapters: getChapterGroup('5')
 	}
 }
 ---
@@ -79,28 +51,30 @@ const groups = {
 	<Container>
 		<div class="flex flex-col gap-48 max-w-768 mx-auto">
 			{
-				Object.keys(groups).map((key) => (
-					<div class="flex flex-col gap-12">
-						<div class="w-full">
-							<p class="text-size-24 font-600 m-0">{groups[key].title}</p>
-						</div>
+				Object.keys(chapterGroups).map((key) => (
+						<div class="flex flex-col gap-12">
+							<div class="w-full">
+								<!--<p>{chapterGroups[key].title}</p>-->
+								<!--<p class="text-size-24 font-600 m-0">{chapterGroups[key].title}</p>-->
+							</div>
 
-						<nav class="w-full">
-							<ul class="flex flex-col gap-12">
-								{
-									groups[key].chapters.map((chapter) => (
-										<li>
-											<ChapterLink href={`/chapter/${chapter.slug}/`}>
-												<span>{chapter.data.title}</span>
-											</ChapterLink>
-										</li>
-									))
-								}
-							</ul>
-						</nav>
-					</div>
-				))
-				}
-				</div>
-				</Container>
-				</div>
+							<nav class="w-full">
+								<ul class="flex flex-col gap-12">
+									{
+										chapterGroups[key].chapters.map((chapter) => (
+											<li>
+												<ChapterLink href={`/chapter/${chapter.slug}/`}>
+													<span>{chapter.title}</span>
+												</ChapterLink>
+											</li>
+										))
+									}
+								</ul>
+							</nav>
+						</div>
+					)
+				)
+			}
+		</div>
+	</Container>
+</div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import ReactPlayer from 'react-player'
 
-
 type Props = {
 	slug: string
 	headings: any
@@ -42,8 +41,8 @@ export const AudioPlayer = ({ slug, headings }: Props) => {
 	}
 
 	return (
-		<div className={'fixed left-0 bottom-0 w-full py-48 z-0'}>
-			<div className={'container mx-auto px-24'}>
+		<div className={'fixed left-0 bottom-0 w-full py-48 z-10'}>
+			<div className={'container mx-auto px-16 md:px-24'}>
 				<button onClick={onPlay}
 								title={"lejátszás"}
 								className={"bg-gray-900 hover:bg-btnRed flex items-center justify-center text-white h-72 w-72 rounded-24"}>
@@ -60,7 +59,8 @@ export const AudioPlayer = ({ slug, headings }: Props) => {
 
 					}
 				</button>
-				<ReactPlayer url={`/audio/${slug}-${currentFile}.mp3`} playing={playing} onEnded={onEnded} width={0}
+				<ReactPlayer url={`/audio/${slug}-${currentFile}.mp3`} playing={playing} onEnded={onEnded}
+										 width={0}
 										 height={0}/>
 			</div>
 		</div>

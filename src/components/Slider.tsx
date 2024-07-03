@@ -20,7 +20,7 @@ export const Slider = ({texts}: any) => {
 				return (
 					<h1
 						key={i}
-						className={`${i === index ? 'opacity-100': 'opacity-0'} text-size-20 sm:text-size-28 md:text-size-36 lg:text-size-44 leading-28 sm:leading-36 md:leading-44 lg:leading-52 font-800 w-full absolute bottom-0 transition-all`}>
+						className={`${i === index ? 'opacity-100': 'opacity-0'} text-size-20 sm:text-size-28 md:text-size-36 lg:text-size-56 leading-28 sm:leading-36 md:leading-44 lg:leading-60 font-800 w-full absolute bottom-0 transition-all`}>
 						{text}
 					</h1>
 				)

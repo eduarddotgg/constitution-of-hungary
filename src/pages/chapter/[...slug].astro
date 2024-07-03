@@ -48,6 +48,7 @@ const title = headings.find(heading => heading.depth === 1)
 
 			<ChapterLink href={`/chapter/${nextPost.slug}/`}>
 				{nextPost.data.title}
+				{nextPost.data.description !== '' && (<span class="font-400 opacity-60 text-size-20">{nextPost.data.description}</span>)}
 			</ChapterLink>
 		</div>}
 
